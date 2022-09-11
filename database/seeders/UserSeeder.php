@@ -18,7 +18,16 @@ class UserSeeder extends Seeder
     {
         $Faker = Faker::create();
 
-        for ($i=0; $i < 20; $i++) { 
+        DB::table('user')->insert([
+            'fisrt_name'    => $Faker->unique()->firstName(),
+            'last_name'     => $Faker->unique()->lastName(),
+            'email'         => $Faker->unique()->safeEmail(),
+            'password'      => Hash::make('123'),
+            'company_id'    => $Faker->numberBetween($min = 1, $max = 3),
+            'admin'         => true,
+        ]);
+
+        for ($i=0; $i < 19; $i++) { 
             DB::table('user')->insert([
                 'fisrt_name'    => $Faker->unique()->firstName(),
                 'last_name'     => $Faker->unique()->lastName(),

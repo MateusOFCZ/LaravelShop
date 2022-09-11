@@ -20,7 +20,8 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->enum('status', ['enabled', 'disabled'])->default('enabled');
-            $table->integer('company_id')->unsigned();
+            $table->boolean('admin')->default(false);
+            $table->integer('company_id')->unsigned()->nullable();
 
             $table->foreign('company_id')->references('id')->on('company');
         });

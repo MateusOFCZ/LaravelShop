@@ -20,7 +20,7 @@ class UserProductSeeder extends Seeder
         for ($i=0; $i < 60; $i++) { 
             DB::table('user_product')->insert([
                 'product_id'    => $Faker->numberBetween($min = 1, $max = 3),
-                'user_id'     => $Faker->numberBetween($min = 1, $max = 20),
+                'user_id'     => $Faker->numberBetween($min = 2, $max = 20),
             ]);
         }
     }
