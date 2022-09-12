@@ -16,7 +16,7 @@ class LoginController extends Controller
 
         return response()->json([
             'data' => [
-                'token' => $Token->plainTextToken
+                'token' => 'Bearer ' . $Token->plainTextToken
             ]
         ]);
     }
