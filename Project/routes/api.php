@@ -30,6 +30,7 @@ Route::middleware('auth:sanctum')->prefix('companyproduct')->group(function() {
     Route::get('/', [CompanyProductController::class, 'index'])->name('companyproduct.index');
     Route::post('/', [CompanyProductController::class, 'store'])->name('companyproduct.store');
     Route::get('/{id}', [CompanyProductController::class, 'show'])->name('companyproduct.show');
+    Route::get('/company/{id}', [CompanyProductController::class, 'showByCompany'])->name('companyproduct.showByCompany');
     Route::post('/{id}', [CompanyProductController::class, 'update'])->name('companyproduct.update');
     Route::delete('/{id}', [CompanyProductController::class, 'destroy'])->name('companyproduct.destroy');
 });
@@ -53,6 +54,7 @@ Route::middleware('auth:sanctum')->prefix('userproduct')->group(function() {
     Route::get('/', [UserProductController::class, 'index'])->name('userproduct.index');
     Route::post('/', [UserProductController::class, 'store'])->name('userproduct.store');
     Route::get('/{id}', [UserProductController::class, 'show'])->name('userproduct.show');
+    Route::get('/user/{id}', [UserProductController::class, 'showByUser'])->name('userproduct.showByUser');
     Route::post('/{id}', [UserProductController::class, 'update'])->name('userproduct.update');
     Route::delete('/{id}', [UserProductController::class, 'destroy'])->name('userproduct.destroy');
 });

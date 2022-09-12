@@ -56,6 +56,17 @@ class CompanyProductController extends Controller
     }
 
     /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function showByCompany($id)
+    {
+        return CompanyProduct::where('company_id', $id)->get();
+    }
+
+    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
