@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\UserRequest;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
@@ -32,17 +32,12 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  App\Http\Requests\UserRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        $request->validate([
-            'email'         => 'unique:user,email',
-            'company_id'    => 'exists:company,id',
-        ]);
-        
+    public function update(UserRequest $request, $id)
+    {        
         $User = User::find($id);
 
         $request['first_name']  != null && $User->first_name   = $request['first_name'];

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\CompanyRequest;
 use App\Models\Company;
 
 class CompanyController extends Controller
@@ -20,19 +20,11 @@ class CompanyController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  App\Http\Requests\CompanyRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        if(auth()->user()->admin == 0) abort(401, 'You Aren\'t a System Administrator');
-        
-        $request->validate([
-            'address'   => 'required',
-            'phone'     => 'required|unique:company,phone',
-            'email'     => 'required|unique:company,email'
-        ]);
-        
+    public function store(CompanyRequest $request)
+    {        
         $Company = new Company();
 
         $Company->address   = $request['address'];
@@ -58,19 +50,12 @@ class CompanyController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  App\Http\Requests\CompanyRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        if(auth()->user()->admin == 0) abort(401, 'You Aren\'t a System Administrator');
-        
-        $request->validate([
-            'phone' => 'unique:company,phone',
-            'email' => 'unique:company,email',
-        ]);
-        
+    public function update(CompanyRequest $request, $id)
+    {        
         $Company = Company::find($id);
 
         $request['address'] != null && $Company->address    = $request['address'];

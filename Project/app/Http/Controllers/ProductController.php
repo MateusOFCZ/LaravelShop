@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\ProductRequest;
 use App\Models\Product;
 
 class ProductController extends Controller
@@ -20,22 +20,11 @@ class ProductController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  App\Http\Requests\ProductRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        if(auth()->user()->admin == 0) abort(401, 'You Aren\'t a System Administrator');
-
-        $request->validate([
-            'name'          => 'required',
-            'description'   => 'required',
-            'model'         => 'required',
-            'brand'         => 'required',
-            'price'         => 'required',
-            'stock'         => 'required'
-        ]);
-        
+    public function store(ProductRequest $request)
+    {        
         $Product = new Product();
 
         $Product->name          = $request['name'];
@@ -64,14 +53,12 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  App\Http\Requests\ProductRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        if(auth()->user()->admin == 0) abort(401, 'You Aren\'t a System Administrator');
-        
+    public function update(ProductRequest $request, $id)
+    {        
         $Product = Product::find($id);
 
         $request['name']        != null && $Product->name           = $request['name'];

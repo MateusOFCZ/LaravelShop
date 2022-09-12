@@ -3,21 +3,14 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use \Illuminate\Http\Request;
+use App\Http\Requests\Auth\RegisterRequest;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
 {
-    public function register(Request $request, User $user)
-    {
-        $request->validate([
-            'first_name'    => 'required',
-            'last_name'     => 'required',
-            'email'         => 'required|unique:user,email',
-            'password'      => 'required'
-        ]);
-        
+    public function register(RegisterRequest $request, User $user)
+    {        
         $Register = $request->only('first_name', 'last_name', 'email', 'password');
         $Register['password'] = Hash::make($Register['password']);
 
