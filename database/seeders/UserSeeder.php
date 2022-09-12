@@ -20,17 +20,19 @@ class UserSeeder extends Seeder
         $Faker = Faker::create();
 
         DB::table('user')->insert([
-            'fisrt_name'    => $Faker->unique()->firstName(),
-            'last_name'     => $Faker->unique()->lastName(),
-            'email'         => $Faker->unique()->safeEmail(),
+            'first_name'    => 'Admin',
+            'last_name'     => 'Administrator',
+            'email'         => 'admin@admin.com',
             'password'      => Hash::make('123'),
-            'company_id'    => $Faker->numberBetween($min = 1, $max = 3),
+            'company_id'    => 1,
             'admin'         => true,
+            'created_at'    => Carbon::now(),
+            'updated_at'    => Carbon::now(),
         ]);
 
         for ($i=0; $i < 19; $i++) { 
             DB::table('user')->insert([
-                'fisrt_name'    => $Faker->unique()->firstName(),
+                'first_name'    => $Faker->unique()->firstName(),
                 'last_name'     => $Faker->unique()->lastName(),
                 'email'         => $Faker->unique()->safeEmail(),
                 'password'      => Hash::make('123'),

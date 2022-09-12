@@ -9,6 +9,9 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserProductController;
 
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -23,6 +26,12 @@ use App\Http\Controllers\UserProductController;
 /*Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });*/
+
+Route::prefix('auth')->group(function() {
+    Route::post('/login', [LoginController::class, 'login']);
+    Route::post('/logout', [LoginController::class, 'logout']);
+    Route::post('/register', [RegisterController::class, 'register']);
+});
 
 Route::middleware('auth:sanctum')->prefix('company')->group(function() {
     Route::get('/', [CompanyController::class, 'index'])->name('company.index');

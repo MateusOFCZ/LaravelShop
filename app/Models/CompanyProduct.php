@@ -7,16 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 class ProductCompany extends Model
 {
     /**
-    * The table associated with the model.
-    *
-    * @var string
-    */
+     * The table associated with the model.
+     *
+     * @var string
+     */
     protected $table = 'product_company';
 
     /**
-    * The primary key od the table.
-    *
-    * @var string
-    */
+     * The primary key od the table.
+     *
+     * @var string
+     */
     protected $primaryKey = 'id';
 }

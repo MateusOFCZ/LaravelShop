@@ -20,9 +20,9 @@ class CompanySeeder extends Seeder
 
         for ($i=0; $i < 3; $i++) { 
             DB::table('company')->insert([
-                'address'   => $Faker->unique()->address(),
-                'phone'     => $Faker->unique()->numerify('+55 (48) 9 ####-####'),
-                'email'     => $Faker->unique()->safeEmail(),
+                'address'       => $Faker->unique()->address(),
+                'phone'         => $Faker->unique()->numerify('+55 (48) 9 ####-####'),
+                'email'         => $Faker->unique()->safeEmail(),
                 'created_at'    => Carbon::now(),
                 'updated_at'    => Carbon::now(),
             ]);

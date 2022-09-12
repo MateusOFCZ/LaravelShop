@@ -28,13 +28,13 @@ class UserController extends Controller
     {
         $User = new User();
 
-        $User->fisrt_name   = $request['fisrt_name'];
+        $User->first_name   = $request['first_name'];
         $User->last_name    = $request['last_name'];
         $User->email        = $request['email'];
         $User->password     = Hash::make($request['password']);
-        $User->status       = $request['status'] ?? 'enabled';
-        $User->admin        = $request['admin'];
-        $User->company_id   = $request['company_id'];
+        $User->status       = $request['status']                    ?? 'enabled';
+        $User->admin        = $request['admin']                     ?? false;
+        $User->company_id   = $request['company_id']                ?? null;
 
         $User->save();
 
@@ -63,7 +63,7 @@ class UserController extends Controller
     {
         $User = User::find($id);
 
-        $request['fisrt_name']  != null && $User->fisrt_name   = $request['fisrt_name'];
+        $request['first_name']  != null && $User->first_name   = $request['first_name'];
         $request['last_name']   != null && $User->last_name    = $request['last_name'];
         $request['email']       != null && $User->email        = $request['email'];
         $request['password']    != null && $User->password     = Hash::make($request['password']);

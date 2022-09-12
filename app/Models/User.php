@@ -10,17 +10,29 @@ class User extends Authenticatable
     use HasApiTokens;
 
     /**
-    * The table associated with the model.
-    *
-    * @var string
-    */
+     * The attributes that are mass assignable.
+     * 
+     * @var string[]
+     */
+    protected $fillable = [
+        'first_name',
+        'last_name',
+        'email',
+        'password'
+    ];
+
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
     protected $table = 'user';
 
     /**
-    * The primary key od the table.
-    *
-    * @var string
-    */
+     * The primary key od the table.
+     *
+     * @var string
+     */
     protected $primaryKey = 'id';
 
     /**
