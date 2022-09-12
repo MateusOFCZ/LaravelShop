@@ -25,6 +25,8 @@ class CompanyProductController extends Controller
      */
     public function store(Request $request)
     {
+        if(auth()->user()->admin == 0) abort(401, 'You Aren\'t a System Administrator');
+
         $request->validate([
             'sell_period' => 'required',
             'product_id' => 'required|exists:product,id',
@@ -62,6 +64,8 @@ class CompanyProductController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if(auth()->user()->admin == 0) abort(401, 'You Aren\'t a System Administrator');
+        
         $request->validate([
             'product_id' => 'exists:product,id',
             'company_id' => 'exists:company,id'

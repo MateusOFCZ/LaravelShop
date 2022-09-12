@@ -25,6 +25,8 @@ class CompanyController extends Controller
      */
     public function store(Request $request)
     {
+        if(auth()->user()->admin == 0) abort(401, 'You Aren\'t a System Administrator');
+        
         $request->validate([
             'address'   => 'required',
             'phone'     => 'required|unique:company,phone',
@@ -62,6 +64,8 @@ class CompanyController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if(auth()->user()->admin == 0) abort(401, 'You Aren\'t a System Administrator');
+        
         $request->validate([
             'phone' => 'unique:company,phone',
             'email' => 'unique:company,email',

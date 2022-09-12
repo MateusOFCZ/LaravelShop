@@ -25,6 +25,8 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        if(auth()->user()->admin == 0) abort(401, 'You Aren\'t a System Administrator');
+
         $request->validate([
             'name'          => 'required',
             'description'   => 'required',
@@ -67,7 +69,9 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {        
+    {
+        if(auth()->user()->admin == 0) abort(401, 'You Aren\'t a System Administrator');
+        
         $Product = Product::find($id);
 
         $request['name']        != null && $Product->name           = $request['name'];
