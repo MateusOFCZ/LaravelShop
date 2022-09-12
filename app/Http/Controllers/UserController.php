@@ -19,37 +19,6 @@ class UserController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        $request->validate([
-            'first_name'    => 'required',
-            'last_name'     => 'required',
-            'email'         => 'required|unique:user,email',
-            'password'      => 'required',
-            'company_id'    => 'exists:company,id',
-        ]);
-        
-        $User = new User();
-
-        $User->first_name   = $request['first_name'];
-        $User->last_name    = $request['last_name'];
-        $User->email        = $request['email'];
-        $User->password     = Hash::make($request['password']);
-        $User->status       = $request['status']                    ?? 'enabled';
-        $User->admin        = $request['admin']                     ?? false;
-        $User->company_id   = $request['company_id']                ?? null;
-
-        $User->save();
-
-        return $User;
-    }
-
-    /**
      * Display the specified resource.
      *
      * @param  int  $id
