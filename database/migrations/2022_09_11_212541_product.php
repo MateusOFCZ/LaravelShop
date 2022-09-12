@@ -22,6 +22,7 @@ return new class extends Migration
             $table->float('price');
             $table->integer('stock');
             $table->enum('status', ['enabled', 'disabled'])->default('enabled');
+            $table->timestamps();
         });
     }
 

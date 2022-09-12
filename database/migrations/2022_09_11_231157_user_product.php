@@ -18,6 +18,7 @@ return new class extends Migration
             $table->enum('status', ['enabled', 'disabled'])->default('enabled');
             $table->integer('product_id')->unsigned();
             $table->integer('user_id')->unsigned();
+            $table->timestamps();
 
             $table->foreign('product_id')->references('id')->on('product');
             $table->foreign('user_id')->references('id')->on('user');

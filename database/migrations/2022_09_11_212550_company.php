@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('phone')->unique();
             $table->string('email')->unique();
             $table->enum('status', ['enabled', 'disabled'])->default('enabled');
+            $table->timestamps();
         });
     }
 

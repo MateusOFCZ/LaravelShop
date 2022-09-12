@@ -22,6 +22,7 @@ return new class extends Migration
             $table->enum('status', ['enabled', 'disabled'])->default('enabled');
             $table->boolean('admin')->default(false);
             $table->integer('company_id')->unsigned()->nullable();
+            $table->timestamps();
 
             $table->foreign('company_id')->references('id')->on('company');
         });

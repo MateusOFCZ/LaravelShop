@@ -18,6 +18,7 @@ return new class extends Migration
             $table->dateTime('sell_period');
             $table->integer('product_id')->unsigned();
             $table->integer('company_id')->unsigned();
+            $table->timestamps();
 
             $table->foreign('product_id')->references('id')->on('product');
             $table->foreign('company_id')->references('id')->on('company');

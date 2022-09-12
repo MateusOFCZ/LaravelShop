@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Faker\Factory as Faker;
+use Carbon\Carbon;
 
 class ProductSeeder extends Seeder
 {
@@ -25,6 +26,8 @@ class ProductSeeder extends Seeder
                 'brand'         => $Faker->domainWord(),
                 'price'         => $Faker->randomFloat($nbDigits = 2, $min = 10, $max = 999),
                 'stock'         => $Faker->numberBetween($min = 0, $max = 50),
+                'created_at'    => Carbon::now(),
+                'updated_at'    => Carbon::now(),
             ]);
         }
     }

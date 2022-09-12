@@ -6,6 +6,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Faker\Factory as Faker;
+use Carbon\Carbon;
 
 class UserSeeder extends Seeder
 {
@@ -34,6 +35,8 @@ class UserSeeder extends Seeder
                 'email'         => $Faker->unique()->safeEmail(),
                 'password'      => Hash::make('123'),
                 'company_id'    => $Faker->numberBetween($min = 1, $max = 3),
+                'created_at'    => Carbon::now(),
+                'updated_at'    => Carbon::now(),
             ]);
         }
     }
