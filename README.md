@@ -1,6 +1,8 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<p align="center">
+    <img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo">
+</p>
 
-Projeto em Laravel, CRUD para atender a [modelagem](https://github.com/MateusOFCZ/LaravelShop/blob/master/Documents/Modelagem.png) e autenticação com [Sanctum](https://laravel.com/docs/9.x/sanctum).
+Projeto em [Laravel](https://laravel.com), CRUD para atender a [modelagem](https://github.com/MateusOFCZ/LaravelShop/blob/master/Documents/Modelagem.png) e autenticação com [Sanctum](https://laravel.com/docs/9.x/sanctum).
 
 <hr>
 
