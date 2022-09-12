@@ -25,6 +25,15 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name'          => 'required',
+            'description'   => 'required',
+            'model'         => 'required',
+            'brand'         => 'required',
+            'price'         => 'required',
+            'stock'         => 'required'
+        ]);
+        
         $Product = new Product();
 
         $Product->name          = $request['name'];
@@ -58,7 +67,7 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
+    {        
         $Product = Product::find($id);
 
         $request['name']        != null && $Product->name           = $request['name'];

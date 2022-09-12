@@ -8,9 +8,13 @@ use \Illuminate\Http\Request;
 class LoginController extends Controller
 {
     public function login(Request $request)
-    {        
-        $Login = $request->only('email', 'password');
+    {
+        $request->validate([
+            'email'     => 'required',
+            'password'  => 'required'
+        ]);
 
+        $Login = $request->only('email', 'password');
         if(!auth()->attempt($Login)) abort(401, 'Invalid E-mail or Password');
 
         $Token = auth()->user()->createToken('auth_token');

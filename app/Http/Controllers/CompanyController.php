@@ -25,6 +25,12 @@ class CompanyController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'address'   => 'required',
+            'phone'     => 'required|unique:company,phone',
+            'email'     => 'required|unique:company,email'
+        ]);
+        
         $Company = new Company();
 
         $Company->address   = $request['address'];
@@ -56,6 +62,11 @@ class CompanyController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'phone' => 'unique:company,phone',
+            'email' => 'unique:company,email',
+        ]);
+        
         $Company = Company::find($id);
 
         $request['address'] != null && $Company->address    = $request['address'];

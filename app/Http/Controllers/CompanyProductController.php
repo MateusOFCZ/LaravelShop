@@ -25,6 +25,12 @@ class CompanyProductController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'sell_period' => 'required',
+            'product_id' => 'required|exists:product,id',
+            'company_id' => 'required|exists:company,id'
+        ]);
+        
         $CompanyProduct = new CompanyProduct();
 
         $CompanyProduct->sell_period    = $request['sell_period'];
@@ -56,6 +62,11 @@ class CompanyProductController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'product_id' => 'exists:product,id',
+            'company_id' => 'exists:company,id'
+        ]);
+        
         $CompanyProduct = CompanyProduct::find($id);
 
         $request['sell_period'] != null && $CompanyProduct->sell_period = $request['sell_period'];

@@ -11,6 +11,13 @@ class RegisterController extends Controller
 {
     public function register(Request $request, User $user)
     {
+        $request->validate([
+            'first_name'    => 'required',
+            'last_name'     => 'required',
+            'email'         => 'required|unique:user,email',
+            'password'      => 'required'
+        ]);
+        
         $Register = $request->only('first_name', 'last_name', 'email', 'password');
         $Register['password'] = Hash::make($Register['password']);
 

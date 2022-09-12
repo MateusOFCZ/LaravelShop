@@ -20,11 +20,16 @@ class UserProductController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\UserProductRequest  $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(UserProductRequest $request)
+    public function store(Request $request)
     {
+        $request->validate([
+            'product_id'    => 'required|exists:product,id',
+            'user_id'       => 'required|exists:user,id'
+        ]);
+        
         $UserProduct = new UserProduct();
 
         $UserProduct->product_id    = $request['product_id'];
@@ -49,12 +54,17 @@ class UserProductController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\UserProductRequest  $request
+     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UserProductRequest $request, $id)
+    public function update(Request $request, $id)
     {
+        $request->validate([
+            'product_id'    => 'exists:product,id',
+            'user_id'       => 'exists:user,id'
+        ]);
+        
         $UserProduct = UserProduct::find($id);
 
         $request['status']      != null && $UserProduct->status        = $request['status'];
