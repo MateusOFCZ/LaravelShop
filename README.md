@@ -164,6 +164,11 @@ Projeto em [Laravel](https://laravel.com), CRUD para atender a [modelagem](https
             - <b>REQUIRED</b> `x-api-key`: API Key configurada no `.env`
         - request
             - <b>REQUIRED</b> `id`: ID do produto da empresa
+    - <b>GET</b> `/company/{id}`: Obtém o produto da empresa pelo `id` da empresa informada
+        - headers
+            - <b>REQUIRED</b> `x-api-key`: API Key configurada no `.env`
+        - request
+            - <b>REQUIRED</b> `id`: ID da empresa
     - <b>POST</b> `/{id}`: Atualiza o produto da empresa do `id` informado
         - headers
             - <b>REQUIRED</b> `x-api-key`: API Key configurada no `.env`
@@ -198,6 +203,11 @@ Projeto em [Laravel](https://laravel.com), CRUD para atender a [modelagem](https
             - <b>REQUIRED</b> `x-api-key`: API Key configurada no `.env`
         - request
             - <b>REQUIRED</b> `id`: ID do produto do usuário
+    - <b>GET</b> `/user/{id}`: Obtém o produto do usuário pelo `id` do usuário informado
+        - headers
+            - <b>REQUIRED</b> `x-api-key`: API Key configurada no `.env`
+        - request
+            - <b>REQUIRED</b> `id`: ID do usuário
     - <b>POST</b> `/{id}`: Atualiza o produto do usuário do `id` informado
         - headers
             - <b>REQUIRED</b> `x-api-key`: API Key configurada no `.env`
