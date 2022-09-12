@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\CompanyProductRequest;
 use App\Models\CompanyProduct;
 
 class CompanyProductController extends Controller
@@ -20,10 +20,10 @@ class CompanyProductController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\CompanyProductRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CompanyProductRequest $request)
     {
         $CompanyProduct = new CompanyProduct();
 
@@ -50,11 +50,11 @@ class CompanyProductController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\CompanyProductRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CompanyProductRequest $request, $id)
     {
         $CompanyProduct = CompanyProduct::find($id);
 

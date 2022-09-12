@@ -3,14 +3,12 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Requests\Auth\LoginRequest;
 
 class LoginController extends Controller
 {
-    public function login(Request $request)
-    {
-        if(!$request['email'] || !$request['password']) abort(401, 'Invalid E-mail or Password');
-        
+    public function login(LoginRequest $request)
+    {        
         $Login = $request->only('email', 'password');
 
         if(!auth()->attempt($Login)) abort(401, 'Invalid E-mail or Password');
