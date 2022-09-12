@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\UserProductUserProductRequest;
+use Illuminate\Http\Request;
 use App\Models\UserProduct;
 
 class UserProductController extends Controller
