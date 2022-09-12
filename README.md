@@ -15,7 +15,7 @@ Projeto em Laravel, CRUD para atender a [modelagem](https://github.com/MateusOFC
 
 - Execute `composer install` para instalar as dependências
 - Execute `cp .env.example .env` para criar o `.env`
-- Configure os dados no `.env` criado
+- Configure o banco de dados no `.env` criado e insira um valor em `API_KEY`
 - Execute `php artisan key:generate` para gerar a chave de criptografia
 - Execute `php artisan migrate` para gerar as tabelas, ou se preferir execute `php artisan migrate:fresh --seed` para gerar as tabelas populadas com dados de exemplo
 - Para iniciar o servidor execute `php artisan serve`
@@ -28,10 +28,14 @@ Projeto em Laravel, CRUD para atender a [modelagem](https://github.com/MateusOFC
 
 - `/auth`
     - <b>POST</b> `/login`: Entra em uma conta com os dados informados
+        - headers
+            - <b>REQUIRED</b> `x-api-key`: API Key configurada no `.env`
         - body
             - <b>REQUIRED</b> `email`: E-mail do usuário
             - <b>REQUIRED</b> `password`: Senha do usuário
     - <b>POST</b> `/register`: Registra um novo usuário com os dados informados
+        - headers
+            - <b>REQUIRED</b> `x-api-key`: API Key configurada no `.env`
         - body
             - <b>REQUIRED</b> `first_name`: Primeiro nome do usuário
             - <b>REQUIRED</b> `last_name`: Último nome do usuário
@@ -39,14 +43,22 @@ Projeto em Laravel, CRUD para atender a [modelagem](https://github.com/MateusOFC
             - <b>REQUIRED</b> `password`: Senha do usuário
     - <b>POST</b> `/logout`: Sai da conta do Token informado
         - headers
+            - <b>REQUIRED</b> `x-api-key`: API Key configurada no `.env`
             - <b>REQUIRED</b> `Authorization`: `Bearer {USER_TOKEN}`: Token do usuário
 
 - `/user`
     - <b>GET</b> `/`: Obtém todos os usuários
+        - headers
+            - <b>REQUIRED</b> `x-api-key`: API Key configurada no `.env`
     - <b>GET</b> `/{id}`: Obtém o usuário do `id` informado
+        - headers
+            - <b>REQUIRED</b> `x-api-key`: API Key configurada no `.env`
         - request
             - <b>REQUIRED</b> `id`: ID do usuário
     - <b>POST</b> `/{id}`: Atualiza o usuário do `id` informado
+        - headers
+            - <b>REQUIRED</b> `x-api-key`: API Key configurada no `.env`
+            - <b>REQUIRED</b> `Authorization`: `Bearer {USER_TOKEN}`: Token do usuário
         - request
             - <b>REQUIRED</b> `id`: ID do usuário
         - body
@@ -59,16 +71,22 @@ Projeto em Laravel, CRUD para atender a [modelagem](https://github.com/MateusOFC
             - <b>OPTIONAL</b> `company_id`: ID da empresa em que o usuário está lotado
     - <b>DELETE</b> `/{id}`: Deleta o usuário do `id` informado
         - headers
+            - <b>REQUIRED</b> `x-api-key`: API Key configurada no `.env`
             - <b>REQUIRED</b> `Authorization`: `Bearer {USER_TOKEN}`: Token do usuário
         - request
             - <b>REQUIRED</b> `id`: ID do usuário
 
 - `/company`
     - <b>GET</b> `/`: Obtém todas as empresas
+        - headers
+            - <b>REQUIRED</b> `x-api-key`: API Key configurada no `.env`
     - <b>GET</b> `/{id}`: Obtém a empresa do `id` informado
         - request
             - <b>REQUIRED</b> `id`: ID da empresa
     - <b>POST</b> `/{id}`: Atualiza a empresa do `id` informado
+        - headers
+            - <b>REQUIRED</b> `x-api-key`: API Key configurada no `.env`
+            - <b>REQUIRED</b> `Authorization`: `Bearer {USER_TOKEN}`: Token do usuário
         - request
             - <b>REQUIRED</b> `id`: ID da empresa
         - body
@@ -78,6 +96,7 @@ Projeto em Laravel, CRUD para atender a [modelagem](https://github.com/MateusOFC
             - <b>OPTIONAL</b> `status`: Endereço da empresa
     - <b>POST</b> `/`: Adiciona uma nova empresa com os dados informados
         - headers
+            - <b>REQUIRED</b> `x-api-key`: API Key configurada no `.env`
             - <b>REQUIRED</b> `Authorization`: `Bearer {USER_TOKEN}`: Token do usuário
         - body
             - <b>REQUIRED</b> `address`: Endereço da empresa
@@ -85,6 +104,7 @@ Projeto em Laravel, CRUD para atender a [modelagem](https://github.com/MateusOFC
             - <b>REQUIRED</b> `email`: Endereço da empresa
     - <b>DELETE</b> `/{id}`: Deleta a empresa do `id` informado
         - headers
+            - <b>REQUIRED</b> `x-api-key`: API Key configurada no `.env`
             - <b>REQUIRED</b> `Authorization`: `Bearer {USER_TOKEN}`: Token do usuário
         - request
             - <b>REQUIRED</b> `id`: ID da empresa
@@ -92,10 +112,17 @@ Projeto em Laravel, CRUD para atender a [modelagem](https://github.com/MateusOFC
 
 - `/product`
     - <b>GET</b> `/`: Obtém todos os produtos
+        - headers
+            - <b>REQUIRED</b> `x-api-key`: API Key configurada no `.env`
     - <b>GET</b> `/{id}`: Obtém o produto do `id` informado
+        - headers
+            - <b>REQUIRED</b> `x-api-key`: API Key configurada no `.env`
         - request
             - <b>REQUIRED</b> `id`: ID do produto
     - <b>POST</b> `/{id}`: Atualiza o produto do `id` informado
+        - headers
+            - <b>REQUIRED</b> `x-api-key`: API Key configurada no `.env`
+            - <b>REQUIRED</b> `Authorization`: `Bearer {USER_TOKEN}`: Token do usuário
         - request
             - <b>REQUIRED</b> `id`: ID do produto
         - body
@@ -108,6 +135,7 @@ Projeto em Laravel, CRUD para atender a [modelagem](https://github.com/MateusOFC
             - <b>OPTIONAL</b> `status`: Produto ativo ou não
     - <b>POST</b> `/`: Adiciona um novo produto com os dados informados
         - headers
+            - <b>REQUIRED</b> `x-api-key`: API Key configurada no `.env`
             - <b>REQUIRED</b> `Authorization`: `Bearer {USER_TOKEN}`: Token do usuário
         - body
             - <b>REQUIRED</b> `name`: Nome do produto
@@ -118,16 +146,24 @@ Projeto em Laravel, CRUD para atender a [modelagem](https://github.com/MateusOFC
             - <b>REQUIRED</b> `stock`: Quantidade de produto no estoque
     - <b>DELETE</b> `/{id}`: Deleta o produto do `id` informado
         - headers
+            - <b>REQUIRED</b> `x-api-key`: API Key configurada no `.env`
             - <b>REQUIRED</b> `Authorization`: `Bearer {USER_TOKEN}`: Token do usuário
         - request
             - <b>REQUIRED</b> `id`: ID do produto
 
 - `/companyproduct`
     - <b>GET</b> `/`: Obtém todos os produtos de todas as empresas
+        - headers
+            - <b>REQUIRED</b> `x-api-key`: API Key configurada no `.env`
     - <b>GET</b> `/{id}`: Obtém o produto da empresa do `id` informado
+        - headers
+            - <b>REQUIRED</b> `x-api-key`: API Key configurada no `.env`
         - request
             - <b>REQUIRED</b> `id`: ID do produto da empresa
     - <b>POST</b> `/{id}`: Atualiza o produto da empresa do `id` informado
+        - headers
+            - <b>REQUIRED</b> `x-api-key`: API Key configurada no `.env`
+            - <b>REQUIRED</b> `Authorization`: `Bearer {USER_TOKEN}`: Token do usuário
         - request
             - <b>REQUIRED</b> `id`: ID do produto da empresa
         - body
@@ -136,6 +172,7 @@ Projeto em Laravel, CRUD para atender a [modelagem](https://github.com/MateusOFC
             - <b>OPTIONAL</b> `company_id`: ID da empresa
     - <b>POST</b> `/`: Adiciona um novo produto da empresa com os dados informados
         - headers
+            - <b>REQUIRED</b> `x-api-key`: API Key configurada no `.env`
             - <b>REQUIRED</b> `Authorization`: `Bearer {USER_TOKEN}`: Token do usuário
         - body
             - <b>REQUIRED</b> `sell_period`: Data e hora de até quando o produto está disponível para venda
@@ -143,16 +180,24 @@ Projeto em Laravel, CRUD para atender a [modelagem](https://github.com/MateusOFC
             - <b>REQUIRED</b> `company_id`: ID da empresa
     - <b>DELETE</b> `/{id}`: Deleta o produto da empresa do `id` informado
         - headers
+            - <b>REQUIRED</b> `x-api-key`: API Key configurada no `.env`
             - <b>REQUIRED</b> `Authorization`: `Bearer {USER_TOKEN}`: Token do usuário
         - request
             - <b>REQUIRED</b> `id`: ID do produto da empresa
 
 - `/userproduct`
     - <b>GET</b> `/`: Obtém todos os produtos de todos os usuários
+        - headers
+            - <b>REQUIRED</b> `x-api-key`: API Key configurada no `.env`
     - <b>GET</b> `/{id}`: Obtém o produto do usuário do `id` informado
+        - headers
+            - <b>REQUIRED</b> `x-api-key`: API Key configurada no `.env`
         - request
             - <b>REQUIRED</b> `id`: ID do produto do usuário
     - <b>POST</b> `/{id}`: Atualiza o produto do usuário do `id` informado
+        - headers
+            - <b>REQUIRED</b> `x-api-key`: API Key configurada no `.env`
+            - <b>REQUIRED</b> `Authorization`: `Bearer {USER_TOKEN}`: Token do usuário
         - request
             - <b>REQUIRED</b> `id`: ID do produto do usuário
         - body
@@ -161,6 +206,7 @@ Projeto em Laravel, CRUD para atender a [modelagem](https://github.com/MateusOFC
             - <b>OPTIONAL</b> `user_id`: ID do usuário
     - <b>POST</b> `/`: Adiciona um novo produto do usuário com os dados informados
         - headers
+            - <b>REQUIRED</b> `x-api-key`: API Key configurada no `.env`
             - <b>REQUIRED</b> `Authorization`: `Bearer {USER_TOKEN}`: Token do usuário
         - body
             - <b>REQUIRED</b> `enable`: Se o usuário pode ou não vender o produto
@@ -168,6 +214,7 @@ Projeto em Laravel, CRUD para atender a [modelagem](https://github.com/MateusOFC
             - <b>REQUIRED</b> `user_id`: ID do usuário
     - <b>DELETE</b> `/{id}`: Deleta o produto do usuário do `id` informado
         - headers
+            - <b>REQUIRED</b> `x-api-key`: API Key configurada no `.env`
             - <b>REQUIRED</b> `Authorization`: `Bearer {USER_TOKEN}`: Token do usuário
         - request
             - <b>REQUIRED</b> `id`: ID do produto do usuário
