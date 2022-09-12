@@ -9,6 +9,8 @@ class LoginController extends Controller
 {
     public function login(Request $request)
     {
+        if(!$request['email'] || !$request['password']) abort(401, 'Invalid E-mail or Password');
+        
         $Login = $request->only('email', 'password');
 
         if(!auth()->attempt($Login)) abort(401, 'Invalid E-mail or Password');
