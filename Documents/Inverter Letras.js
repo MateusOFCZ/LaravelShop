@@ -1,3 +1,5 @@
+//JavaScript Playground: https://playcode.io/960495
+
 let value = "5LABS: SEMPRE A FRENTE";
 let final = null;
 var word = [];

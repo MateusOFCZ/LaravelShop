@@ -1,4 +1,5 @@
 <?php
+//PHP Playground: https://www.tehplayground.com/Pd6CKT3opb1YKvTu
 error_reporting(E_ERROR | E_PARSE);
 
 $value = "5LABS: SEMPRE A FRENTE";
