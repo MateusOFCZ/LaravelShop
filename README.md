@@ -24,7 +24,7 @@ Projeto em Laravel, CRUD para atender a [modelagem](https://github.com/MateusOFC
 
 # Endpoints
 
-<b>Todos os endpoints com `update` e `store` são necessários permissão de `admin` na tabela `user` (Exceto o endpoint `auth` e `user`)</b>
+> Todos os endpoints com `update` e `store` são necessários permissão de `admin` na tabela `user` <b>(Exceto o endpoint `auth` e `user`)</b>
 
 - `/auth`
     - <b>POST</b> `/login`: Entra em uma conta com os dados informados
@@ -56,7 +56,7 @@ Projeto em Laravel, CRUD para atender a [modelagem](https://github.com/MateusOFC
             - <b>OPTIONAL</b> `password`: Senha do usuário
             - <b>OPTIONAL</b> `status`: Usuário ativo ou não
             - <b>OPTIONAL</b> `admin`: Usuário é administrador ou não
-            - <b>OPTIONAL</b> `company_id`: ID da empresa
+            - <b>OPTIONAL</b> `company_id`: ID da empresa em que o usuário está lotado
     - <b>DELETE</b> `/{id}`: Deleta o usuário do `id` informado
         - headers
             - <b>REQUIRED</b> `Authorization`: `Bearer {USER_TOKEN}`: Token do usuário
@@ -89,3 +89,85 @@ Projeto em Laravel, CRUD para atender a [modelagem](https://github.com/MateusOFC
         - request
             - <b>REQUIRED</b> `id`: ID da empresa
             
+
+- `/product`
+    - <b>GET</b> `/`: Obtém todos os produtos
+    - <b>GET</b> `/{id}`: Obtém o produto do `id` informado
+        - request
+            - <b>REQUIRED</b> `id`: ID do produto
+    - <b>POST</b> `/{id}`: Atualiza o produto do `id` informado
+        - request
+            - <b>REQUIRED</b> `id`: ID do produto
+        - body
+            - <b>OPTIONAL</b> `name`: Nome do produto
+            - <b>OPTIONAL</b> `description`: Descrição do produto
+            - <b>OPTIONAL</b> `model`: Modelo do produto
+            - <b>OPTIONAL</b> `brand`: Marca do produto
+            - <b>OPTIONAL</b> `price`: Preço do produto
+            - <b>OPTIONAL</b> `stock`: Quantidade de produto no estoque
+            - <b>OPTIONAL</b> `status`: Produto ativo ou não
+    - <b>POST</b> `/`: Adiciona um novo produto com os dados informados
+        - headers
+            - <b>REQUIRED</b> `Authorization`: `Bearer {USER_TOKEN}`: Token do usuário
+        - body
+            - <b>REQUIRED</b> `name`: Nome do produto
+            - <b>REQUIRED</b> `description`: Descrição do produto
+            - <b>REQUIRED</b> `model`: Modelo do produto
+            - <b>REQUIRED</b> `brand`: Marca do produto
+            - <b>REQUIRED</b> `price`: Preço do produto
+            - <b>REQUIRED</b> `stock`: Quantidade de produto no estoque
+    - <b>DELETE</b> `/{id}`: Deleta o produto do `id` informado
+        - headers
+            - <b>REQUIRED</b> `Authorization`: `Bearer {USER_TOKEN}`: Token do usuário
+        - request
+            - <b>REQUIRED</b> `id`: ID do produto
+
+- `/companyproduct`
+    - <b>GET</b> `/`: Obtém todos os produtos de todas as empresas
+    - <b>GET</b> `/{id}`: Obtém o produto da empresa do `id` informado
+        - request
+            - <b>REQUIRED</b> `id`: ID do produto da empresa
+    - <b>POST</b> `/{id}`: Atualiza o produto da empresa do `id` informado
+        - request
+            - <b>REQUIRED</b> `id`: ID do produto da empresa
+        - body
+            - <b>OPTIONAL</b> `sell_period`: Data e hora de até quando o produto está disponível para venda
+            - <b>OPTIONAL</b> `product_id`: ID do produto
+            - <b>OPTIONAL</b> `company_id`: ID da empresa
+    - <b>POST</b> `/`: Adiciona um novo produto da empresa com os dados informados
+        - headers
+            - <b>REQUIRED</b> `Authorization`: `Bearer {USER_TOKEN}`: Token do usuário
+        - body
+            - <b>REQUIRED</b> `sell_period`: Data e hora de até quando o produto está disponível para venda
+            - <b>REQUIRED</b> `product_id`: ID do produto
+            - <b>REQUIRED</b> `company_id`: ID da empresa
+    - <b>DELETE</b> `/{id}`: Deleta o produto da empresa do `id` informado
+        - headers
+            - <b>REQUIRED</b> `Authorization`: `Bearer {USER_TOKEN}`: Token do usuário
+        - request
+            - <b>REQUIRED</b> `id`: ID do produto da empresa
+
+- `/userproduct`
+    - <b>GET</b> `/`: Obtém todos os produtos de todos os usuários
+    - <b>GET</b> `/{id}`: Obtém o produto do usuário do `id` informado
+        - request
+            - <b>REQUIRED</b> `id`: ID do produto do usuário
+    - <b>POST</b> `/{id}`: Atualiza o produto do usuário do `id` informado
+        - request
+            - <b>REQUIRED</b> `id`: ID do produto do usuário
+        - body
+            - <b>OPTIONAL</b> `enable`: Se o usuário pode ou não vender o produto
+            - <b>OPTIONAL</b> `product_id`: ID do produto
+            - <b>OPTIONAL</b> `user_id`: ID do usuário
+    - <b>POST</b> `/`: Adiciona um novo produto do usuário com os dados informados
+        - headers
+            - <b>REQUIRED</b> `Authorization`: `Bearer {USER_TOKEN}`: Token do usuário
+        - body
+            - <b>REQUIRED</b> `enable`: Se o usuário pode ou não vender o produto
+            - <b>REQUIRED</b> `product_id`: ID do produto
+            - <b>REQUIRED</b> `user_id`: ID do usuário
+    - <b>DELETE</b> `/{id}`: Deleta o produto do usuário do `id` informado
+        - headers
+            - <b>REQUIRED</b> `Authorization`: `Bearer {USER_TOKEN}`: Token do usuário
+        - request
+            - <b>REQUIRED</b> `id`: ID do produto do usuário
