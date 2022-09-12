@@ -22,6 +22,8 @@ Projeto em [Laravel](https://laravel.com), CRUD para atender a [modelagem](https
 - Execute `php artisan migrate` para gerar as tabelas, ou se preferir execute `php artisan migrate:fresh --seed` para gerar as tabelas populadas com dados de exemplo
 - Para iniciar o servidor execute `php artisan serve`
 
+- Por padrão o Token está para expirar a cada 24 horas, você pode alterar em [`Project\config\sanctum.php:41`](https://github.com/MateusOFCZ/LaravelShop/blob/master/Project/config/sanctum.php#L49)
+
 <hr>
 
 # Endpoints
