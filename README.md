@@ -24,7 +24,7 @@ Projeto em Laravel, CRUD para atender a [modelagem](https://github.com/MateusOFC
 
 # Endpoints
 
-<b>Todos os endpoints com `update` e `store` são necessários permissão de `admin` na tabela `user` (Exceto o endpoint `auth` e `user`)</b>
+> Todos os endpoints com `update` e `store` são necessários permissão de `admin` na tabela `user` <b>(Exceto o endpoint `auth` e `user`)</b>
 
 - `/auth`
     - <b>POST</b> `/login`: Entra em uma conta com os dados informados
