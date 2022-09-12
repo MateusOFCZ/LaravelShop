@@ -1,4 +1,6 @@
 <?php
+error_reporting(E_ERROR | E_PARSE);
+
 $value = "5LABS: SEMPRE A FRENTE";
 $word = [];
 $result = [];
